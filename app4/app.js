@@ -13,8 +13,11 @@ app.controller('mainController', ['$log', '$filter', function($log, $filter) {
 
     self.handleLength = 5;
 
-    self.handleIsValid = function() {
-        return self.handle.length === self.handleLength;
-    };
+    self.showWarning = function() {
+        return self.handle.length < self.handleLength;
+    }
 
+    self.showDanger = function() {
+        return self.handle.length > self.handleLength;
+    }
 }]);
