@@ -1,0 +1,20 @@
+<!doctype html>
+<html ng-app="app1">
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <script src="app.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container" ng-controller="mainController as mainCtrl">
+            <div class="row">
+                <h1>AngularJS</h1>
+            </div>
+            <div class="row">
+                <input type="button" value="Click me" ng-click="mainCtrl.onClick()" class="btn btn-primary">
+            </div>
+        </div>
+    </body>
+</html>
