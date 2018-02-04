@@ -15,9 +15,19 @@ app.controller('mainController', ['$log', '$filter', function($log, $filter) {
 
     self.showWarning = function() {
         return self.handle.length < self.handleLength;
-    }
+    };
 
     self.showDanger = function() {
         return self.handle.length > self.handleLength;
+    };
+
+    let rules = [
+        {'name': `Must be ${self.handleLength} characters.`},
+        {'name': 'Must be unique.'},
+        {'name': 'Must be memorable.'}
+    ];
+
+    self.getRules = function() {
+        return rules;
     }
 }]);
