@@ -26,17 +26,16 @@ app.controller('mainController', ['$log', '$filter', '$http', function($log, $fi
     var rules = {};
     self.gotRules = false;
 
-    $http({
-        method : "GET",
-        url : "http://demo1621533.mockable.io/rules"
-    }).then(function mySuccess(response) {
-        $log.info(response.data);
+    $http.get('http://demo1621533.mockable.io/rules')
+    .then(function(response) {
+        $log.info(response);
         rules = response.data;
         self.gotRules = true;
-    }, function myError(response) {
-        $log.error(response.statusText);
+    }, 
+    function(errorResponse) {
+        $log.error(errorResponse);
     });
-
+    
     self.getRules = function() {
         return rules;
     };
