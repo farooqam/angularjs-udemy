@@ -9,6 +9,11 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', [function() {
+.controller('View2Ctrl', ['$log',function($log) {
+  var self = this;
+  
+  $log.info(self);
+
+  self.text = 'hello moto';
 
 }]);
