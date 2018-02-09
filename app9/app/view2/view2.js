@@ -9,11 +9,10 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', ['$log',function($log) {
+.controller('View2Ctrl', ['$log', 'nameService', function($log, nameService) {
   var self = this;
+  var name = nameService.getName();
+  $log.info(name);
+  self.text = `Name is '${name.name}' with length '${name.length}'.`;
   
-  $log.info(self);
-
-  self.text = 'hello moto';
-
 }]);

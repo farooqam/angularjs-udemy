@@ -10,4 +10,12 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
   $locationProvider.hashPrefix('!');
 
   $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+}])
+.service('nameService', function() {
+  var self = this;
+  let name = 'Farooq Mahmud';
+
+  self.getName = function() {
+    return {name: name, length: name.length};
+  }
+});
