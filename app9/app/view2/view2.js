@@ -9,10 +9,14 @@ angular.module('myApp.view2', ['ngRoute'])
   });
 }])
 
-.controller('View2Ctrl', ['$log', 'nameService', function($log, nameService) {
+.controller('View2Ctrl', ['$log', 'nameService', '$scope', function($log, nameService, $scope) {
   var self = this;
-  var name = nameService.getName();
-  $log.info(name);
-  self.text = `Name is '${name.name}' with length '${name.length}'.`;
+  self.text = nameService.getName();
   
+  $scope.$watch(angular.bind(this, function() {
+    return self.text;
+  }), function(newValue, oldValue) {
+      $log.info(`Old value (View2Ctrl): ${oldValue}; New value: ${newValue}`);
+      nameService.setName(newValue);
+  });
 }]);

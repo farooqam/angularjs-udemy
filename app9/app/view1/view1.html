@@ -1,5 +1,12 @@
 <h1>View 1</h1>
-<pre>
-        select * from dbo.table
-        where col1 = 'foo';
-</pre>
+<div ng-controller="View1Ctrl as ctrl">
+  <div class="form-group">
+    <label for="inputName">Name:</label>
+    <input type="text" class="form-control" id="inputName" ng-model="ctrl.text">
+  </div>
+
+  <div class="jumbotron">
+    {{ctrl.text}}
+  </div>
+
+</div>

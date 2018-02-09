@@ -13,9 +13,14 @@ config(['$locationProvider', '$routeProvider', function($locationProvider, $rout
 }])
 .service('nameService', function() {
   var self = this;
-  let name = 'Farooq Mahmud';
+  var name = 'Farooq Mahmud';
 
   self.getName = function() {
-    return {name: name, length: name.length};
-  }
+    return name;
+  };
+
+  self.setName = function(newName) {
+    name = newName;
+  };
+
 });

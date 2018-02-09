@@ -9,6 +9,14 @@ angular.module('myApp.view1', ['ngRoute'])
   });
 }])
 
-.controller('View1Ctrl', [function() {
+.controller('View1Ctrl', ['$log', 'nameService', '$scope', function($log, nameService, $scope) {
+  var self = this;
+  self.text = nameService.getName();
 
+  $scope.$watch(angular.bind(this, function() {
+    return self.text;
+  }), function(newValue, oldValue) {
+      $log.info(`Old value (View1Ctrl): ${oldValue}; New value: ${newValue}`);
+      nameService.setName(newValue);
+  });
 }]);
