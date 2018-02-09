@@ -2,15 +2,6 @@
 <input type="text" value="Farooq" />
 
 <h3>Search Results</h3>
-<div class="list-group">
-    <search-result></search-result>
-    <search-result></search-result>
-    <search-result></search-result>
-    <search-result></search-result>
-    <search-result></search-result>
-    <search-result></search-result>
-    <search-result></search-result>
-    <search-result></search-result>
-    <search-result></search-result>
-    <search-result></search-result>    
+<div class="list-group" ng-controller="SearchCtrl as ctrl">
+    <search-result metadata="ctrl.metadata" header="{{ctrl.person.name}}" text="{{ctrl.person.address}}"></search-result>
 </div>
