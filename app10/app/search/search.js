@@ -12,4 +12,10 @@ angular.module('myApp.search', ['ngRoute'])
 .controller('SearchCtrl', ['$log', function($log) {
   var self = this;
   
+}])
+.directive("searchResult", ['$log', function($log) {
+    return {
+        templateUrl: 'search/searchResult.html',
+        replace: true
+    };
 }]);
