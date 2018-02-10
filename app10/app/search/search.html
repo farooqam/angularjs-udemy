@@ -3,5 +3,10 @@
 
 <h3>Search Results</h3>
 <div class="list-group" ng-controller="SearchCtrl as ctrl">
-    <search-result metadata="ctrl.metadata" header="{{ctrl.person.name}}" text="{{ctrl.person.address}}"></search-result>
+    <search-result 
+        metadata="ctrl.metadata" 
+        header="{{ctrl.person.name}}" 
+        text="{{ctrl.person.address}}"
+        hash-fn="ctrl.hashMetadata(val)">
+    </search-result>
 </div>

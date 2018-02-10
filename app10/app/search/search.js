@@ -22,6 +22,12 @@ angular.module('myApp.search', ['ngRoute'])
       description: 'foo'
   };
 
+  self.hashMetadata = function(metadata) {
+    let hash = sha256(`${metadata.id}${metadata.description.toLowerCase()}`);
+    $log.info(`Hash: ${hash}`);
+    return hash;
+  };
+
 }])
 .directive("searchResult", ['$log', function($log) {
     return {
@@ -30,7 +36,8 @@ angular.module('myApp.search', ['ngRoute'])
         scope: {
             header: '@',
             text: '@',    
-            metadata: '='        
+            metadata: '=',
+            hashFn: '&'        
         }
     };
 }]);
