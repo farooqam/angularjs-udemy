@@ -23,8 +23,9 @@ angular.module('myApp.search', ['ngRoute'])
   };
 
   self.hashMetadata = function(metadata) {
-    let hash = sha256(`${metadata.id}${metadata.description.toLowerCase()}`);
-    $log.info(`Hash: ${hash}`);
+    let stringToHash = `${metadata.id}${metadata.description.toLowerCase()}`;
+    let hash = sha256(stringToHash);
+    $log.info(JSON.stringify({str: stringToHash, hash: hash}));
     return hash;
   };
 
