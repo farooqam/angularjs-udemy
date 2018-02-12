@@ -8,24 +8,30 @@ angular.module('myApp.search', ['ngRoute'])
             controller: 'SearchCtrl'
         });
     }])
+    .service('SearchService', ['$log', function($log){
+        var self = this;
+        self.getPeople = function() {
+            return [
+                {
+                    name: 'Bubba Gump',
+                    address: '100 1st Ave, New York, NY 10010'
+                },
+                {
+                    name: 'Farooq Mahmud',
+                    address: '100 1st Ave, New York, NY 10010'
+                },
+                {
+                    name: 'Emily Green',
+                    address: '100 1st Ave, New York, NY 10010'
+                }
+            ];
+        }
+    }])
 
-    .controller('SearchCtrl', ['$log', function ($log) {
+    .controller('SearchCtrl', ['$log', 'SearchService', function ($log, SearchService) {
         var self = this;
 
-        self.people = [
-            {
-                name: 'Bubba Gump',
-                address: '100 1st Ave, New York, NY 10010'
-            },
-            {
-                name: 'Farooq Mahmud',
-                address: '100 1st Ave, New York, NY 10010'
-            },
-            {
-                name: 'Emily Green',
-                address: '100 1st Ave, New York, NY 10010'
-            }
-        ];
+        self.people = SearchService.getPeople();
 
         self.metadata = {
             id: 100,
