@@ -1,0 +1,17 @@
+<label>Search</label>
+<input type="text" value="Farooq" />
+
+<h3>Search Results</h3>
+<div class="list-group" ng-controller="SearchCtrl as ctrl">
+    <div ng-repeat="person in ctrl.people">
+            <search-result 
+            metadata="ctrl.metadata" 
+            header="{{person.name}}" 
+            text="{{person.address}}"
+            hash-fn="ctrl.hashPerson(person)",
+            person="person">
+            <span>*Search results may be out of date.</span>
+        </search-result>
+    </div>
+    
+</div>
