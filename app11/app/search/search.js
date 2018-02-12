@@ -51,22 +51,15 @@ angular.module('myApp.search', ['ngRoute'])
                 hashFn: '&',
                 person: '='
             },
-            compile: function(elem, attr){
-                $log.info('Compiling...');
-                $log.info(elem.html());
-            
-                return {
-                    post: function(scope, elements, attributes){
-                        $log.info('Post-linking...');
-                        $log.info(elements.html());
-                        $log.info(scope);
+            link: function(scope, elements, attributes){
+                $log.info('Linking...');
+                $log.info(elements.html());
+                $log.info(scope);
 
-                        if(scope.person.name === 'Bubba Gump'){
-                            elements.attr('ng-if', '1===2');
-                            $compile(elements)(scope);
-                        }
-                    }
-                };
+                if(scope.person.name === 'Bubba Gump'){
+                    elements.attr('ng-if', '1===2');
+                    $compile(elements)(scope);
+                }
             }
         };
     }]);
