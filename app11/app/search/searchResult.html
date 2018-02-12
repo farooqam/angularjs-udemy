@@ -1,8 +1,8 @@
 <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
     <div class="d-flex w-100 justify-content-between">
-        <h5 class="mb-1">{{header}}</h5>
+        <h5 class="mb-1">{{person.name}}</h5>
         <small>({{metadata.id}},{{metadata.description}})</small>
     </div>
-    <p class="mb-1">{{text}}</p>
+    <p class="mb-1">{{person.address}}</p>
     <small>Sha256: {{hashFn({val: person})}}</small>
 </a>
