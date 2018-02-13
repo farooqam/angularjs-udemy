@@ -4,6 +4,7 @@ describe('weatherApp.home module', function() {
 
   beforeEach(module('weatherApp.home'));
   beforeEach(module('weatherApp.forecast'));
+  beforeEach(module('ngResource'));
 
   describe('home controller', function(){
 
@@ -23,7 +24,7 @@ describe('weatherApp.home module', function() {
     });
 
     it('should get the forecast', function() {
-      spyOn(_forecastService, 'getForecast').and.callThrough();
+      spyOn(_forecastService, 'getForecast').and.returnValue('foo');
       _controller.getForecast('Seattle');
 
       expect(_forecastService.getForecast.calls.count()).toEqual(1);
