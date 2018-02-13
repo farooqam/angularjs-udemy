@@ -5,8 +5,11 @@
     </div>
     <p class="mb-1">{{person.address}}</p>
     <small>Sha256: {{hashFn({val: person})}}</small>
-    <div>
-        <small><ng-transclude></ng-transclude></small>
+    <div class="alert alert-warning">
+        <small ng-transclude="warnMessage">Default warning message.</small>
+    </div>
+    <div class="alert alert-danger">
+        <small ng-transclude="errorMessage">Default error message.</small>
     </div>
     
 </a>

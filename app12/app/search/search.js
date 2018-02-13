@@ -67,6 +67,9 @@ angular.module('myApp.search', ['ngRoute'])
                     $compile(elements)(scope);
                 }
             },
-            transclude: true
+            transclude: {
+                'warnMessage': '?warnMessage',
+                'errorMessage' : '?errorMessage'
+            }
         };
     }]);
