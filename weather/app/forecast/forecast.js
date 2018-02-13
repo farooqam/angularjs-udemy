@@ -9,7 +9,26 @@ angular.module('weatherApp.forecast', ['ngRoute'])
   });
 }])
 
-.controller('ForecastController', ['$log', function($log) {
+.controller('ForecastController', ['$log', 'ForecastService', function($log, ForecastService) {
   var self = this;
-  $log.info('ForecastController says hello!');
+
+  self.city = ForecastService.getCity();
+  $log.info(`ForecastController city: ${self.city}`);
+
+}])
+
+.service('ForecastService', ['$log', function($log){
+  var self = this;
+
+  var _city = '';
+
+  self.getForecast = function(city) {
+    _city = city;
+    $log.info(`ForecastService city: ${_city}`);
+  };
+
+  self.getCity = function() {
+    return _city;
+  }
+
 }]);
