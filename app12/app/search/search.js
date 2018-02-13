@@ -46,7 +46,7 @@ angular.module('myApp.search', ['ngRoute'])
         }
 
     }])
-    .directive("searchResult", ['$log', '$compile', function ($log, $compile) {
+    .directive("searchResult", ['$log', '$compile', 'AuthService', function ($log, $compile, AuthService) {
         return {
             templateUrl: 'search/searchResult.html',
             replace: true,
@@ -62,7 +62,7 @@ angular.module('myApp.search', ['ngRoute'])
                 $log.info(elements.html());
                 $log.info(scope);
 
-                if(scope.person.name === 'Bubba Gump'){
+                if(!AuthService.showElement(scope.person)){
                     elements.attr('ng-if', '1===2');
                     $compile(elements)(scope);
                 }
