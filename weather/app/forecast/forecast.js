@@ -14,7 +14,7 @@ angular.module('weatherApp.forecast', ['ngRoute'])
 
   self.city = ForecastService.getCity();
   $log.info(`ForecastController city: ${self.city}`);
-
+  self.forecast = ForecastService.getForecast(self.city);
 }])
 
 .service('ForecastService', ['$log', '$resource', function($log, $resource){
@@ -30,14 +30,16 @@ angular.module('weatherApp.forecast', ['ngRoute'])
     
     let api = $resource(apiUrl);
 
-    self.forecast = api.get( {
+    var forecast = api.get( {
       q: _city,
       mode: 'json',
       cnt: count,
       appId: '0bfd9c8ec382ac598e201a033426f6ef'
     });
  
-    $log.info(self.forecast);
+    $log.info(forecast);
+
+    return forecast;
   };
 
   self.getCity = function() {

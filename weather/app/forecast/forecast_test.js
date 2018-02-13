@@ -11,6 +11,7 @@ describe('weatherApp.forecast module', function() {
 
     beforeEach(inject(function($controller, $httpBackend, ForecastService) {
       spyOn(ForecastService, 'getCity').and.returnValue('foo');
+      spyOn(ForecastService, 'getForecast').and.returnValue('bar');      
       _controller = $controller('ForecastController');
     }));
 
@@ -18,8 +19,12 @@ describe('weatherApp.forecast module', function() {
       expect(_controller).toBeDefined();
     });
 
-    it('should get the forecast', function() {
+    it('should get the forecast city', function() {
       expect(_controller.city).toEqual('foo');
+    });
+
+    it('should get the forecast', function() {
+      expect(_controller.forecast).toEqual('bar');
     });
 
   });
@@ -37,10 +42,10 @@ describe('weatherApp.forecast module', function() {
       let city = 'Seattle';
       _http.expectGET(new RegExp('.*')).respond(200, {temp: 100});
 
-      _forecastService.getForecast(city);
+      var forecast = _forecastService.getForecast(city);
       _http.flush();
 
-      expect(_forecastService.forecast.temp).toBe(100);
+      expect(forecast.temp).toBe(100);
     });
 
     afterEach(function() {
