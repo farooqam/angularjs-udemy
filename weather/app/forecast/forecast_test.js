@@ -53,4 +53,48 @@ describe('weatherApp.forecast module', function() {
       _http.verifyNoOutstandingRequest();      
     });
   });
+
+  describe('convertTemp filter', function() {
+    var _filter;
+
+    beforeEach(inject(function(convertTempFilter) {
+      _filter = convertTempFilter;
+    }));
+
+    it('should convert kelvin to farenheit', function() {
+        var testData = [
+          {
+            k: 273,
+            f: 32
+          },
+          {
+            k: 280,
+            f: 44.6 
+          }
+        ];
+
+        testData.forEach(d => {
+          expect(_filter(d.k, 'ktof')).toEqual(d.f);
+        });
+
+    });
+
+    it('should return given temp when convert method not specifid', function() {
+      var testData = [
+        {
+          k: 273,
+          f: 32
+        },
+        {
+          k: 280,
+          f: 44.6 
+        }
+      ];
+
+      testData.forEach(d => {
+        expect(_filter(d.k)).toEqual(d.k);
+      });
+
+  });
+  });
 });

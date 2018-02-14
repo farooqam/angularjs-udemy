@@ -46,4 +46,13 @@ angular.module('weatherApp.forecast', ['ngRoute'])
     return _city;
   }
 
+}])
+.filter('convertTemp', [function() {
+  return function(temp, mode) {
+    if(mode === 'ktof') {
+      return ((9/5)*(temp - 273)) + 32;
+    }
+
+    return temp;
+  }
 }]);
