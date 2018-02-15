@@ -9,6 +9,8 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-mocks/angular-mocks.js',
       'bower_components/angular-resource/angular-resource.js',      
+      'bower_components/moment/min/moment.min.js',   
+      'bower_components/angular-momentjs/angular-momentjs.min.js',
       'components/**/*.js',
       'view*/**/*.js',
       'forecast*/**/*.js',

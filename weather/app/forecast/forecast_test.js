@@ -97,4 +97,22 @@ describe('weatherApp.forecast module', function() {
 
   });
   });
+
+  describe('prettyPrintTicks filter', function() {
+    var _filter;
+
+    beforeEach(inject(function(prettyPrintTicksFilter) {
+      _filter = prettyPrintTicksFilter;
+    }));
+
+    it('should print UNIX seconds in UTC time by default', function() {
+        let dt = 1518652800;
+        expect(_filter(dt)).toEqual('Thursday, February 15th 2018');
+    });
+
+    it('should print UNIX seconds in local time', function() {
+      let dt = 1518652800;
+      expect(_filter(dt, true)).toEqual('Wednesday, February 14th 2018');
+  });
+  });
 });

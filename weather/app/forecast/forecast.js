@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('weatherApp.forecast', ['ngRoute'])
+angular.module('weatherApp.forecast', ['ngRoute', 'angular-momentjs'])
 
 .config(['$routeProvider', function($routeProvider) {
   $routeProvider.when('/forecast', {
@@ -55,4 +55,16 @@ angular.module('weatherApp.forecast', ['ngRoute'])
 
     return temp;
   }
-}]);
+  }])
+  .filter('prettyPrintTicks', [function() {
+    return function(dt, asLocalTime) {
+    
+      var m = moment.unix(dt);
+
+      if(!asLocalTime) {
+        m = m.utc();
+      }
+      
+      return m.format('dddd, MMMM Do YYYY');
+    }
+  }]);
