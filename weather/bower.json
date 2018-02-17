@@ -15,6 +15,7 @@
     "jquery": "^3.3.1",
     "angular-resource": "^1.6.9",
     "moment": "^2.20.1",
-    "angular-momentjs": "^0.2.2"
+    "angular-momentjs": "^0.2.2",
+    "PACE": "pace-js#^1.0.2"
   }
 }
